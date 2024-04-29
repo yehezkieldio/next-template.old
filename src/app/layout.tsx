@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
+import { TRPCReactProvider } from "@/trpc/react";
 
 import type { Metadata } from "next";
 
@@ -22,7 +23,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={cn("dark min-h-screen bg-background font-sans antialiased", font.variable)}>
-                {children}
+                <TRPCReactProvider>{children}</TRPCReactProvider>
             </body>
         </html>
     );
