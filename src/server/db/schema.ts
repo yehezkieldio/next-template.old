@@ -1,6 +1,6 @@
-import { index, integer, pgEnum, pgTableCreator, primaryKey, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { generatePublicId } from "@/server/db/nanoid";
 import { relations, sql } from "drizzle-orm";
+import { index, integer, pgEnum, pgTableCreator, primaryKey, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "next-auth/adapters";
 
 export const createTable = pgTableCreator((name) => `next-template_${name}`);
