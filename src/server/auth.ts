@@ -2,9 +2,24 @@ import { env } from "@/env";
 import { db } from "@/server/db";
 import { accounts, sessions, users, verificationTokens } from "@/server/db/schema";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import NextAuth from "next-auth";
+import NextAuth, { type DefaultSession } from "next-auth";
 import type { Adapter } from "next-auth/adapters";
 import Discord from "next-auth/providers/discord";
+
+declare module "next-auth" {
+    interface Session extends DefaultSession {
+        user: {
+            id: string;
+            uid: string;
+            role: string;
+        } & DefaultSession["user"];
+    }
+
+    interface User {
+        uid: string;
+        role: string;
+    }
+}
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     adapter: DrizzleAdapter(db, {
@@ -20,3 +35,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }),
     ],
 });
+
+export const getAuth = () => auth;
