@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "format": "bunx @biomejs/biome format --write ./src",
+    "format:check": "bunx @biomejs/biome format ./src",
+    "lint": "bunx @biomejs/biome check --apply ./src",
+    "lint:check": "bunx @biomejs/biome check ./src"
   },
   "dependencies": {
     "react": "^18",
@@ -14,11 +17,12 @@
     "next": "canary"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@biomejs/biome": "1.7.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
