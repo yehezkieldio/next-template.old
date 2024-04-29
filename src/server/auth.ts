@@ -36,4 +36,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     ],
 });
 
-export const getAuth = () => auth;
+export const getAuth = async () => await auth();
